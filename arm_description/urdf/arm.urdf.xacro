@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<xacro:macro name="hexapod_arm" params="parent">
+
+    <joint name="arm_attachment" type="fixed">
+        <parent link="${parent}"/>
+        <child link="arm_link_1"/>
+    </joint>
+
+    <link name="arm_link_1">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint_1" type="revolute">
+        <parent link="arm_link_1"/>
+        <child link="arm_link_2"/>
+        <origin xyz="0.0 0.0 0.194" rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0"/>
+        <dynamics friction="0"/>
+        <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    </joint>
+
+    <link name="arm_link_2">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint_2" type="revolute">
+        <parent link="arm_link_2"/>
+        <child link="arm_link_3"/>
+        <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0"/>
+        <dynamics friction="0"/>
+        <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    </joint>
+
+    <link name="arm_link_3">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2.0}"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_3.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_3.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint_3" type="revolute">
+        <parent link="arm_link_3"/>
+        <child link="arm_link_4"/>
+        <origin xyz="-0.3683 0.014 0.073" rpy="0.0 ${pi} 0.0"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0"/>
+        <dynamics friction="0"/>
+        <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    </joint>
+
+    <link name="arm_link_4">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2.0}"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_4.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_4.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint_4" type="revolute">
+        <parent link="arm_link_4"/>
+        <child link="arm_link_5"/>
+        <origin xyz="-0.202 0.0 0.0" rpy="0.0 ${pi} 0.0"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0"/>
+        <dynamics friction="0"/>
+        <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    </joint>
+
+    <link name="arm_link_5">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_5.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_5.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint_5" type="revolute">
+        <parent link="arm_link_5"/>
+        <child link="arm_link_6"/>
+        <origin xyz="0.17875 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0"/>
+        <dynamics friction="0"/>
+        <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    </joint>
+
+    <link name="arm_link_6">
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0.001" ixz="0.001" iyy="0.001" iyz="0.001" izz="0.001"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/visual/arm_link_6.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/collision/arm_link_6.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+</xacro:macro>
+
+
+</robot>

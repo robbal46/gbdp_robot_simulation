@@ -1,0 +1,15 @@
+<launch>
+    
+    <include file="$(find arm_description)/launch/arm_upload.launch"/>   
+
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+        <remap from="/joint_states" to="/hexapod/joint_states"/>
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <remap from="/joint_states" to="/hexapod/joint_states"/>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm_description)/config/arm_view.rviz" required="true" />
+
+</launch>   
