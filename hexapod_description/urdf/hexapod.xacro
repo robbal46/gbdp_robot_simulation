@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<robot name="hexapod_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find hexapod_description)/urdf/hexapod.urdf.xacro" />
+    
+    <link name="base_link"/>   
+
+    <xacro:hexapod_base parent="base_link"/>
+
+</robot>

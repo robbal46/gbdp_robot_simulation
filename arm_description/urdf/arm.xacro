@@ -5,7 +5,7 @@
     
     <link name="base_link"/>   
 
-    <xacro:hexapod_arm parent="base_link"/>
+    <xacro:hexapod_arm parent="base_link" xyz="0 0 0" rpy="0 0 0"/>
 
     
     <!-- Fix to floor for gazebo testing -->
