@@ -1,0 +1,14 @@
+<launch>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="worlds/empty.world"/>
+      <arg name="paused" value="true"/>
+    </include>
+
+
+    <include file="$(find hexapod_description)/launch/hexapod_upload.launch"/>
+
+    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args=" -urdf -param robot_description -model hexapod -z 0.15" />
+
+    <include file="$(find hexapod_control)/launch/hexapod_control.launch"/>
+</launch>

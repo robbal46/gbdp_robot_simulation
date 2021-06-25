@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="hexapod_gazebo">
+
+        <gazebo reference="body_link">
+            <material>Gazebo/Black</material>
+            <mu1>0.2</mu1>
+            <mu2>0.2</mu2>
+            <maxVel>0</maxVel>
+        </gazebo>
+        
+        <xacro:leg_gazebo suffix="lf"/>
+        <xacro:leg_gazebo suffix="lm"/>
+        <xacro:leg_gazebo suffix="lr"/>
+        <xacro:leg_gazebo suffix="rf"/>
+        <xacro:leg_gazebo suffix="rm"/>
+        <xacro:leg_gazebo suffix="rr"/>        
+
+        <gazebo>
+            <plugin name="ros_control" filename="libgazebo_ros_control.so">
+              <robotNamespace></robotNamespace>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+
+    <xacro:macro name="leg_gazebo" params="suffix">
+            <gazebo reference="coxa_link_${suffix}">
+                <material>Gazebo/White</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+                <maxVel>0</maxVel>
+            </gazebo>
+            <gazebo reference="thigh_link_${suffix}">
+                <material>Gazebo/Grey</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+                <maxVel>0</maxVel>
+            </gazebo>
+            <gazebo reference="tibia_link_${suffix}">
+                <material>Gazebo/Black</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+                <maxVel>0</maxVel>
+            </gazebo>
+        </xacro:macro>
+</robot>

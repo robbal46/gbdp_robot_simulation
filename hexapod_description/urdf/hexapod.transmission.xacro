@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="leg_joint_transmission" params="suffix">
+
+        <transmission name="coxa_joint_${suffix}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="coxa_joint_${suffix}">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
+            </joint>
+            <actuator name="coxa_joint_${suffix}_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="thigh_joint_${suffix}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="thigh_joint_${suffix}">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
+            </joint>
+            <actuator name="thigh_joint_${suffix}_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="tibia_joint_${suffix}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="tibia_joint_${suffix}">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
+            </joint>
+            <actuator name="tibia_joint_${suffix}_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+    </xacro:macro>    
+
+</robot>

@@ -7,4 +7,8 @@
 
     <xacro:hexapod_base parent="base_link"/>
 
+    <xacro:include filename="$(find hexapod_description)/urdf/hexapod.gazebo.xacro"/>
+    <xacro:hexapod_gazebo/>
+
+
 </robot>

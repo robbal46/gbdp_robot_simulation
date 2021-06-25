@@ -217,6 +217,8 @@
             </collision>
         </link>
 
+        <xacro:include filename="$(find arm_description)/urdf/arm.transmission.xacro"/>
+
     </xacro:macro>
 
 
