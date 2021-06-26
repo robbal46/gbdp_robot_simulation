@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(arm_moveit_config)
+project(hexapod_arm_moveit_config)
 
 find_package(catkin REQUIRED)
 

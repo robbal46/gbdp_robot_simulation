@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="arm_gazebo">
+
+        <xacro:macro name="arm_link" params="link">
+            <gazebo reference="arm_link_${link}">
+                <material>Gazebo/Blue</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+            </gazebo>
+        </xacro:macro>
+
+        <xacro:arm_link link="1"/>
+        <xacro:arm_link link="2"/>
+        <xacro:arm_link link="3"/>
+        <xacro:arm_link link="4"/>
+        <xacro:arm_link link="5"/>
+        <xacro:arm_link link="6"/>        
+
+    </xacro:macro>
+
+</robot>

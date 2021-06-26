@@ -15,13 +15,8 @@
         <xacro:leg_gazebo suffix="lr"/>
         <xacro:leg_gazebo suffix="rf"/>
         <xacro:leg_gazebo suffix="rm"/>
-        <xacro:leg_gazebo suffix="rr"/>        
-
-        <gazebo>
-            <plugin name="ros_control" filename="libgazebo_ros_control.so">
-              <robotNamespace></robotNamespace>
-            </plugin>
-        </gazebo>
+        <xacro:leg_gazebo suffix="rr"/>     
+        
     </xacro:macro>
 
     <xacro:macro name="leg_gazebo" params="suffix">
