@@ -12,7 +12,6 @@
         </joint>
 
         <link name="arm_link_1">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -48,7 +47,6 @@
         </joint>
 
         <link name="arm_link_2">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -84,7 +82,6 @@
         </joint>
 
         <link name="arm_link_3">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -120,7 +117,6 @@
         </joint>
 
         <link name="arm_link_4">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -156,7 +152,6 @@
         </joint>
 
         <link name="arm_link_5">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -192,7 +187,6 @@
         </joint>
 
         <link name="arm_link_6">
-
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="0.1"/>
@@ -216,6 +210,39 @@
                 </geometry>
             </collision>
         </link>
+
+
+        <joint name="arm_camera_attachment" type="fixed">
+            <parent link="arm_link_6"/>
+            <child link="arm_camera_link"/>
+            <origin xyz="0.09 -0.025 0.065" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="arm_camera_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.1"/>
+                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+            </inertial>
+
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://arm_description/meshes/visual/arm_camera.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="Grey">
+                    <color rgba="0.2 0.2 0.2 1"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://arm_description/meshes/collision/arm_camera.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+            </collision>
+        </link>
+
 
         <xacro:include filename="$(find arm_description)/urdf/arm.transmission.xacro"/>
 

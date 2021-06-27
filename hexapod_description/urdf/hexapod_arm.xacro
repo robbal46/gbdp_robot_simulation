@@ -15,10 +15,8 @@
 
     <!--Include Gazebo components-->
     <xacro:include filename="$(find hexapod_description)/urdf/hexapod.gazebo.xacro"/>
-    <xacro:hexapod_gazebo/>
     
     <xacro:include filename="$(find arm_description)/urdf/arm.gazebo.xacro"/>
-    <xacro:arm_gazebo/>
 
     <gazebo>
         <plugin name="ros_control" filename="libgazebo_ros_control.so">

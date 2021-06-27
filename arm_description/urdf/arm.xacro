@@ -16,8 +16,12 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <xacro:include filename="$(find arm_description)/urdf/common.gazebo.xacro"/>
+    <xacro:include filename="$(find arm_description)/urdf/arm.gazebo.xacro"/>
 
-    <xacro:include filename="$(find arm_description)/urdf/arm.transmission.xacro"/>
+    <gazebo>
+        <plugin name="ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace></robotNamespace>
+        </plugin>
+    </gazebo>
 
 </robot>

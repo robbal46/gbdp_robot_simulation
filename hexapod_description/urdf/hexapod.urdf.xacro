@@ -47,6 +47,69 @@
         <xacro:hexapod_leg xyz="0.0 -0.0795 0.0" rpy="0.0 0.0 -${pi/2.0}" suffix="rm"/>
         
         <xacro:hexapod_leg xyz="-0.1497 -0.0797 0.0" rpy="0.0 0.0 -2.404" suffix="rr"/>
+
+
+        <joint name="camera_attachment" type="fixed">
+            <parent link="body_link"/>
+            <child link="front_camera_link"/>
+            <origin xyz="0.33 0.0 0.04" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="front_camera_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="1"/>
+                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+            </inertial>
+
+            <visual>
+                <origin xyz="0 0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://hexapod_description/meshes/visual/camera.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="Grey">
+                    <color rgba="0.2 0.2 0.2 1"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://hexapod_description/meshes/collision/camera.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="lidar_attachment" type="fixed">
+            <parent link="body_link"/>
+            <child link="lidar_link"/>
+            <origin xyz="0.275 0.0 0.079" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="lidar_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="1"/>
+                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+            </inertial>
+
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://hexapod_description/meshes/visual/lidar.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="Grey">
+                    <color rgba="0.2 0.2 0.2 1"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://hexapod_description/meshes/collision/lidar.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+            </collision>
+        </link>
         
 
     </xacro:macro>
