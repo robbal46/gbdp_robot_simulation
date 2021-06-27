@@ -80,14 +80,7 @@
                 <frameName>lidar_link</frameName>
             </plugin>      
         </sensor>
-    </gazebo>
-    
-    <xacro:leg_gazebo suffix="lf"/>
-    <xacro:leg_gazebo suffix="lm"/>
-    <xacro:leg_gazebo suffix="lr"/>
-    <xacro:leg_gazebo suffix="rf"/>
-    <xacro:leg_gazebo suffix="rm"/>
-    <xacro:leg_gazebo suffix="rr"/>     
+    </gazebo>        
     
     <xacro:macro name="leg_gazebo" params="suffix">
         <gazebo reference="coxa_link_${suffix}">
@@ -109,5 +102,12 @@
             <maxVel>0</maxVel>
         </gazebo>
     </xacro:macro>  
+
+    <xacro:leg_gazebo suffix="lf"/>
+    <xacro:leg_gazebo suffix="lm"/>
+    <xacro:leg_gazebo suffix="lr"/>
+    <xacro:leg_gazebo suffix="rf"/>
+    <xacro:leg_gazebo suffix="rm"/>
+    <xacro:leg_gazebo suffix="rr"/> 
 
 </robot>
