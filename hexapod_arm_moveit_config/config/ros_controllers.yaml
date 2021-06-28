@@ -14,24 +14,7 @@ hardware_interface:
     - arm_joint_3
     - arm_joint_4
     - arm_joint_5
-    # - coxa_joint_lf
-    # - thigh_joint_lf
-    # - tibia_joint_lf
-    # - coxa_joint_lm
-    # - thigh_joint_lm
-    # - tibia_joint_lm
-    # - coxa_joint_lr
-    # - thigh_joint_lr
-    # - tibia_joint_lr
-    # - coxa_joint_rf
-    # - thigh_joint_rf
-    # - tibia_joint_rf
-    # - coxa_joint_rm
-    # - thigh_joint_rm
-    # - tibia_joint_rm
-    # - coxa_joint_rr
-    # - thigh_joint_rr
-    # - tibia_joint_rr
+
   sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
@@ -48,11 +31,11 @@ arm_controller:
     - arm_joint_4
     - arm_joint_5
   gains:
-    arm_joint_1: { p: 1000, i: 0.0, d: 0.0, i_clamp: 1}
-    arm_joint_2: { p: 1000, i: 0.0, d: 0.0, i_clamp: 1}
-    arm_joint_3: { p: 1000, i: 0.0, d: 0.0, i_clamp: 1}
-    arm_joint_4: { p: 1000, i: 0.0, d: 0.0, i_clamp: 1}
-    arm_joint_5: { p: 1000, i: 0.0, d: 0.0, i_clamp: 1}
+    arm_joint_1: { p: 1000, i: 0.1, d: 1.0, i_clamp: 1}
+    arm_joint_2: { p: 1000, i: 0.1, d: 1.0, i_clamp: 1}
+    arm_joint_3: { p: 1000, i: 0.1, d: 1.0, i_clamp: 1}
+    arm_joint_4: { p: 1000, i: 0.1, d: 1.0, i_clamp: 1}
+    arm_joint_5: { p: 1000, i: 0.1, d: 1.0, i_clamp: 1}
   
   state_publish_rate: 25
 

@@ -60,12 +60,16 @@
     <passive_joint name="thigh_joint_rr"/>
     <passive_joint name="tibia_joint_rr"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="arm_camera_link" link2="arm_link_4" reason="Never"/>
+    <disable_collisions link1="arm_camera_link" link2="arm_link_6" reason="Adjacent"/>
     <disable_collisions link1="arm_link_1" link2="arm_link_2" reason="Adjacent"/>
     <disable_collisions link1="arm_link_1" link2="body_link" reason="Adjacent"/>
     <disable_collisions link1="arm_link_1" link2="coxa_link_lm" reason="Never"/>
     <disable_collisions link1="arm_link_1" link2="coxa_link_lr" reason="Never"/>
     <disable_collisions link1="arm_link_1" link2="coxa_link_rm" reason="Never"/>
     <disable_collisions link1="arm_link_1" link2="coxa_link_rr" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="arm_link_2" link2="arm_link_3" reason="Adjacent"/>
     <disable_collisions link1="arm_link_2" link2="arm_link_4" reason="Never"/>
     <disable_collisions link1="arm_link_2" link2="body_link" reason="Never"/>
@@ -75,11 +79,13 @@
     <disable_collisions link1="arm_link_2" link2="coxa_link_rf" reason="Never"/>
     <disable_collisions link1="arm_link_2" link2="coxa_link_rm" reason="Never"/>
     <disable_collisions link1="arm_link_2" link2="coxa_link_rr" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="arm_link_2" link2="thigh_link_lr" reason="Never"/>
-    <disable_collisions link1="arm_link_2" link2="thigh_link_rr" reason="Never"/>
     <disable_collisions link1="arm_link_3" link2="arm_link_4" reason="Adjacent"/>
     <disable_collisions link1="arm_link_4" link2="arm_link_5" reason="Adjacent"/>
     <disable_collisions link1="arm_link_4" link2="arm_link_6" reason="Never"/>
+    <disable_collisions link1="arm_link_4" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="arm_link_5" link2="arm_link_6" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="coxa_link_lf" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="coxa_link_lm" reason="Adjacent"/>
@@ -87,16 +93,35 @@
     <disable_collisions link1="body_link" link2="coxa_link_rf" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="coxa_link_rm" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="coxa_link_rr" reason="Adjacent"/>
+    <disable_collisions link1="body_link" link2="front_camera_link" reason="Adjacent"/>
+    <disable_collisions link1="body_link" link2="lidar_link" reason="Adjacent"/>
     <disable_collisions link1="coxa_link_lf" link2="coxa_link_lr" reason="Never"/>
     <disable_collisions link1="coxa_link_lf" link2="coxa_link_rr" reason="Never"/>
+    <disable_collisions link1="coxa_link_lf" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_lf" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_lf" link2="thigh_link_lf" reason="Adjacent"/>
+    <disable_collisions link1="coxa_link_lm" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_lm" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_lm" link2="thigh_link_lm" reason="Adjacent"/>
     <disable_collisions link1="coxa_link_lr" link2="coxa_link_rf" reason="Never"/>
+    <disable_collisions link1="coxa_link_lr" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_lr" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_lr" link2="thigh_link_lr" reason="Adjacent"/>
     <disable_collisions link1="coxa_link_rf" link2="coxa_link_rr" reason="Never"/>
+    <disable_collisions link1="coxa_link_rf" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_rf" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_rf" link2="thigh_link_rf" reason="Adjacent"/>
+    <disable_collisions link1="coxa_link_rm" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_rm" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_rm" link2="thigh_link_rm" reason="Adjacent"/>
+    <disable_collisions link1="coxa_link_rr" link2="front_camera_link" reason="Never"/>
+    <disable_collisions link1="coxa_link_rr" link2="lidar_link" reason="Never"/>
     <disable_collisions link1="coxa_link_rr" link2="thigh_link_rr" reason="Adjacent"/>
+    <disable_collisions link1="front_camera_link" link2="lidar_link" reason="Never"/>
+    <disable_collisions link1="front_camera_link" link2="thigh_link_lr" reason="Never"/>
+    <disable_collisions link1="front_camera_link" link2="thigh_link_rr" reason="Never"/>
+    <disable_collisions link1="lidar_link" link2="thigh_link_lr" reason="Never"/>
+    <disable_collisions link1="lidar_link" link2="thigh_link_rr" reason="Never"/>
     <disable_collisions link1="thigh_link_lf" link2="tibia_link_lf" reason="Adjacent"/>
     <disable_collisions link1="thigh_link_lm" link2="tibia_link_lm" reason="Adjacent"/>
     <disable_collisions link1="thigh_link_lr" link2="tibia_link_lr" reason="Adjacent"/>
