@@ -153,16 +153,16 @@
             </collision>
         </link>
 
-        <joint name="thigh_joint_${suffix}" type="revolute">
+        <joint name="femur_joint_${suffix}" type="revolute">
             <parent link="coxa_link_${suffix}"/>
-            <child link="thigh_link_${suffix}"/>
+            <child link="femur_link_${suffix}"/>
             <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <axis xyz="0 1 0"/>
             <limit effort="87" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
             <dynamics damping="1.0"/>
         </joint>
 
-        <link name="thigh_link_${suffix}">
+        <link name="femur_link_${suffix}">
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="1"/>
@@ -188,7 +188,7 @@
         </link>
 
         <joint name="tibia_joint_${suffix}" type="revolute">
-            <parent link="thigh_link_${suffix}"/>
+            <parent link="femur_link_${suffix}"/>
             <child link="tibia_link_${suffix}"/>
             <origin xyz="0.1199 0.0 0.07597" rpy="0.0 0.0 0.0"/>
             <axis xyz="0 1 0"/>

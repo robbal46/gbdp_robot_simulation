@@ -1,0 +1,6 @@
+hexapod_msgs/LegJoints left_front_leg
+hexapod_msgs/LegJoints left_mid_leg
+hexapod_msgs/LegJoints left_rear_leg
+hexapod_msgs/LegJoints right_front_leg
+hexapod_msgs/LegJoints right_mid_leg
+hexapod_msgs/LegJoints right_rear_leg

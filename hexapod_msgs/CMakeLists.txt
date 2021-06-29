@@ -1,19 +1,17 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(hexapod_control)
+project(hexapod_msgs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  std_msgs
-  hexapod_msgs
+    message_generation
+    std_msgs
+    geometry_msgs
 )
-
-find_package(Eigen3 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -49,11 +47,14 @@ find_package(Eigen3 REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+    FILES
+    FeetPositions.msg
+    LegJoints.msg
+    LegsJoints.msg
+    Pose.msg
+    RPY.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -70,10 +71,11 @@ find_package(Eigen3 REQUIRED)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+    DEPENDENCIES
+    std_msgs
+    geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,8 +108,8 @@ find_package(Eigen3 REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES hexapod_control
-#  CATKIN_DEPENDS other_catkin_pkg
+#  LIBRARIES hexapod_msgs
+    CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -115,19 +117,16 @@ catkin_package(
 ## Build ##
 ###########
 
-set(Eigen3_INCLUDE_DIRS "/usr/include/eigen3")
-
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
 # include
- ${catkin_INCLUDE_DIRS}
- ${Eigen3_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/hexapod_control.cpp
+#   src/${PROJECT_NAME}/hexapod_msgs.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -138,22 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/hexapod_control_node.cpp)
-
-add_executable(hexapod_control
-  src/hexapod_control.cpp
-  src/hexapod_controller.cpp
-  src/hexapod_model.cpp
-  src/kinematics.cpp
-)
-
-add_executable(message_relay
-  src/message_relay.cpp
-)
-
-add_executable(test_joints
-  src/test_joints.cpp
-)
+# add_executable(${PROJECT_NAME}_node src/hexapod_msgs_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -165,18 +149,10 @@ add_executable(test_joints
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-add_dependencies(hexapod_control hexapod_msgs_generate_messages_cpp)
-
-add_dependencies(message_relay hexapod_msgs_generate_messages_cpp)
-
 ## Specify libraries to link a library or executable target against
-target_link_libraries(hexapod_control ${catkin_LIBRARIES} ${Eigen3_LIBRARIES})
-
-target_link_libraries(message_relay ${catkin_LIBRARIES})
-
-target_link_libraries(test_joints ${catkin_LIBRARIES})
-
-
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -225,7 +201,7 @@ target_link_libraries(test_joints ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_hexapod_control.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_hexapod_msgs.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

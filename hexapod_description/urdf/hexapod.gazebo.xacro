@@ -89,7 +89,7 @@
             <mu2>0.2</mu2>
             <maxVel>0</maxVel>
         </gazebo>
-        <gazebo reference="thigh_link_${suffix}">
+        <gazebo reference="femur_link_${suffix}">
             <material>Gazebo/Grey</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>

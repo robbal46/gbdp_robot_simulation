@@ -1,8 +1,22 @@
 <launch>
+    <rosparam file="$(find hexapod_description)/config/params.yaml" command="load"/>
 
+    
+    
     <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/>
 
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller hexapod_controller" respawn="false" output="screen"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
+        args="joint_state_controller hexapod_controller"/>
+
+    <node name="message_relay" pkg="hexapod_control" type="message_relay" output="screen">
+        <remap from="/message_relay/hexapod_controller/command" to="/hexapod_controller/command"/>
+        <remap from="/message_relay/leg_joints_command" to="/leg_joints_command"/>
+    </node>
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+
+    <node name="hexapod_control" pkg="hexapod_control" type="hexapod_control" output="screen">
+        <remap from="/hexapod_control/leg_joints_command" to="/leg_joints_command"/>
+    </node>
 </launch>

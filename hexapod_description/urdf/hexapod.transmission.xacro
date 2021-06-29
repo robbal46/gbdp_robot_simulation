@@ -14,12 +14,12 @@
             </actuator>
         </transmission>
 
-        <transmission name="thigh_joint_${suffix}_transmission">
+        <transmission name="femur_joint_${suffix}_transmission">
             <type>transmission_interface/SimpleTransmission</type>
-            <joint name="thigh_joint_${suffix}">
+            <joint name="femur_joint_${suffix}">
                 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
             </joint>
-            <actuator name="thigh_joint_${suffix}_motor">
+            <actuator name="femur_joint_${suffix}_motor">
                 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>

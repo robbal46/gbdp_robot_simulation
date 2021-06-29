@@ -1,0 +1,23 @@
+# Hexapod configuration Settings
+
+
+# Define leg measurements in meters
+COXA_LENGTH:   0.100
+FEMUR_LENGTH:  0.142
+TIBIA_LENGTH:  0.190
+
+# Body Standing Height
+STANDING_BODY_HEIGHT: 0.2
+
+# Leg lift height is the max distance in meters the foot is lifted off the ground in a full step ( Gait Settings )
+# If you set this to close to the total measurement of your femur and tibia the leg IK calculation might fail
+LEG_LIFT_HEIGHT: 0.05
+
+# Define vector x & y component in meters in the local coordinate system from center of the hexapod platform to coxa joint ['LF', 'LM', 'LB', 'RF', 'RM', 'RB']
+CENTER_TO_COXA_X: [-0.0797, -0.0795, -0.0797, 0.055, 0.0795, 0.0797]
+CENTER_TO_COXA_Y: [0.1497, 0.0, -0.1497, 0.1497, 0.0, -0.1497]
+
+# Define vector x & y component in meters from origin in the global coordinate system to feet ground contact joint ['LF', 'LM', 'LB', 'RF', 'RM', 'RB']
+CENTER_TO_FEET_X: [-0.1853, -0.1851 ,-0.1853, 0.1853, 0.1851, 0.1853]
+CENTER_TO_FEET_Y: [0.3483, 0.0, -0.3483, 0.3483, 0.0, -0.3483]
+CENTER_TO_FEET_Z: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
