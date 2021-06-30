@@ -1,14 +1,17 @@
 <?xml version="1.0" ?>
 <robot name="hexapod_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find hexapod_description)/urdf/hexapod.urdf.xacro" />
+    <xacro:include filename="$(find hexapod_description)/urdf/hexapod.urdf.xacro" />    
     
     <link name="base_link"/>   
-
     <xacro:hexapod_base parent="base_link"/>
 
     <xacro:include filename="$(find hexapod_description)/urdf/hexapod.gazebo.xacro"/>
-    <xacro:hexapod_gazebo/>
 
+    <gazebo>
+        <plugin name="ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace></robotNamespace>
+        </plugin>
+    </gazebo>
 
 </robot>

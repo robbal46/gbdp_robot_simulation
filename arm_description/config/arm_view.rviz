@@ -63,6 +63,11 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        arm_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         arm_link_1:
           Alpha: 1
           Show Axes: false
@@ -73,10 +78,135 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        arm_link_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_link_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_link_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_link_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        body_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_lf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_lm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_lr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_rf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_rm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        coxa_link_rr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_lf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_lm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_lr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_rf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_rm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_link_rr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_lf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_lm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_lr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_rf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_rm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tibia_link_rr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -119,17 +249,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.12136019766330719
-        Y: -0.035575222223997116
-        Z: 0.05629349872469902
+        X: -0.047920480370521545
+        Y: 0.12989692389965057
+        Z: 0.0033402293920516968
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7147968411445618
+      Pitch: 0.5097969174385071
       Target Frame: <Fixed Frame>
-      Yaw: 2.4672200679779053
+      Yaw: 1.5872199535369873
     Saved: ~
 Window Geometry:
   Displays:

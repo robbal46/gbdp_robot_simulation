@@ -6,9 +6,14 @@
     </include>
 
 
-    <include file="$(find hexapod_description)/launch/hexapod_upload.launch"/>
+    <include file="$(find hexapod_description)/launch/hexapod_upload.launch">
+      <arg name="arm" value="false"/>
+    </include>
 
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args=" -urdf -param robot_description -model hexapod -z 0.15" />
 
+
     <include file="$(find hexapod_control)/launch/hexapod_control.launch"/>
+
+    <node name="hexapod_walker" pkg="hexapod_gazebo" type="walker.py" output="screen"/>
 </launch>

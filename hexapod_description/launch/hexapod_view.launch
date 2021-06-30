@@ -1,6 +1,8 @@
 <launch>
     
-    <include file="$(find hexapod_description)/launch/hexapod_upload.launch"/>   
+    <include file="$(find hexapod_description)/launch/hexapod_upload.launch">
+        <arg name="arm" value="true"/>
+    </include>  
 
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
 

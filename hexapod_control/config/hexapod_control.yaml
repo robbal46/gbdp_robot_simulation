@@ -3,45 +3,80 @@ joint_state_controller:
   publish_rate: 50
 
 hexapod_controller:
-  type: effort_controllers/JointPositionController
-  joints:
-    - coxa_joint_lf
+  type: effort_controllers/JointGroupPositionController
+  joints:    
     - thigh_joint_lf
-    - tibia_joint_lf
-    - coxa_joint_lm
-    - thigh_joint_lm
-    - tibia_joint_lm
-    - coxa_joint_lr
-    - thigh_joint_lr
-    - tibia_joint_lr
-    - coxa_joint_rf
-    - thigh_joint_rf
-    - tibia_joint_rf
-    - coxa_joint_rm
     - thigh_joint_rm
-    - tibia_joint_rm
-    - coxa_joint_rr
+    - thigh_joint_lr
+    - thigh_joint_rf
+    - thigh_joint_lm
     - thigh_joint_rr
+    - tibia_joint_lf
+    - tibia_joint_rm
+    - tibia_joint_lr
+    - tibia_joint_rf
+    - tibia_joint_lm
     - tibia_joint_rr
+    - coxa_joint_lf
+    - coxa_joint_rm
+    - coxa_joint_lr
+    - coxa_joint_rf
+    - coxa_joint_lm
+    - coxa_joint_rr
 
-  gains:
-    coxa_joint_lf: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_lf: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_lf: {p: 1000, i: 0.1, d: 1}
-    coxa_joint_lm: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_lm: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_lm: {p: 1000, i: 0.1, d: 1}
-    coxa_joint_lr: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_lr: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_lr: {p: 1000, i: 0.1, d: 1}
-    coxa_joint_rf: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_rf: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_rf: {p: 1000, i: 0.1, d: 1}
-    coxa_joint_rm: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_rm: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_rm: {p: 1000, i: 0.1, d: 1}
-    coxa_joint_rr: {p: 1000, i: 0.1, d: 1}
-    thigh_joint_rr: {p: 1000, i: 0.1, d: 1}
-    tibia_joint_rr: {p: 1000, i: 0.1, d: 1}
+    # - coxa_joint_lf
+    # - thigh_joint_lf
+    # - tibia_joint_lf
+    # - coxa_joint_lm
+    # - thigh_joint_lm
+    # - tibia_joint_lm
+    # - coxa_joint_lr
+    # - thigh_joint_lr
+    # - tibia_joint_lr
+    # - coxa_joint_rf
+    # - thigh_joint_rf
+    # - tibia_joint_rf
+    # - coxa_joint_rm
+    # - thigh_joint_rm
+    # - tibia_joint_rm
+    # - coxa_joint_rr
+    # - thigh_joint_rr
+    # - tibia_joint_rr
 
-  state_publish_rate: 25
+
+  coxa_joint_lf:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_lf:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_lf:
+    pid: {p: 100, i: 20, d: 1.0}
+  coxa_joint_lm:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_lm:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_lm:
+    pid: {p: 100, i: 20, d: 1.0}
+  coxa_joint_lr:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_lr:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_lr:
+    pid: {p: 100, i: 20, d: 1.0}
+  coxa_joint_rf:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_rf:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_rf:
+    pid: {p: 100, i: 20, d: 1.0}  
+  coxa_joint_rm:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_rm:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_rm:
+    pid: {p: 100, i: 20, d: 1.0}
+  coxa_joint_rr:
+    pid: {p: 100, i: 20, d: 1.0}
+  thigh_joint_rr:
+    pid: {p: 100, i: 20, d: 1.0}
+  tibia_joint_rr:
+    pid: {p: 100, i: 20, d: 1.0}

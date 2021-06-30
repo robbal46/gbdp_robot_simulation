@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro '$(find hexapod_description)/urdf/hexapod_arm.xacro' "/>
+    <arg name="arm" default="false"/>
+
+    <group if="$(arg arm)">
+        <param name="robot_description" command="$(find xacro)/xacro '$(find hexapod_description)/urdf/hexapod_arm.xacro' "/>
+    </group>
+
+    <group unless="$(arg arm)">
+        <param name="robot_description" command="$(find xacro)/xacro '$(find hexapod_description)/urdf/hexapod.xacro' "/>
+    </group>
 </launch>
