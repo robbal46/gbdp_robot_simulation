@@ -1,19 +1,65 @@
 <launch>
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="worlds/empty.world"/>
-      <arg name="paused" value="true"/>
-    </include>
+  <arg name="paused" default="false"/>
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+  </include>
+
+  <!-- send robot urdf to param server -->
+  <include file="$(find hexapod_description)/launch/hexapod_upload.launch">
+    <arg name="arm" value="true"/>
+  </include>
+
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0.15"
+    respawn="false" output="screen" />
 
 
-    <include file="$(find hexapod_description)/launch/hexapod_upload.launch">
-      <arg name="arm" value="false"/>
-    </include>
 
-    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args=" -urdf -param robot_description -model hexapod -z 0.15" />
+  <!-- Load the controllers -->
+  <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/>
+  <rosparam file="$(find hexapod_arm_moveit_config)/config/ros_controllers.yaml" command="load"/>
+  
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller arm_controller hexapod_controller"/>
+
+  
+
+  <!-- joint state publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
+    <rosparam param="source_list">[/joint_states]</rosparam>
+  </node>
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find hexapod_arm_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="load_robot_description" value="false"/>
+  </include>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <!-- <include file="$(find hexapod_arm_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find hexapod_arm_moveit_config)/launch/moveit.rviz"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include> -->
+
+  
+  <!-- Hexapod movement control -->
+  <node name="hexapod_walker" pkg="hexapod_gazebo" type="walker.py"/>
 
 
-    <include file="$(find hexapod_control)/launch/hexapod_control.launch"/>
+  <!-- Launch RQT dashboard -->
+  <node name="rqt_dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" args="--perspective-file $(find hexapod_gazebo)/config/dashboard.perspective"/>
 
-    <node name="hexapod_walker" pkg="hexapod_gazebo" type="walker.py" output="screen"/>
+
 </launch>

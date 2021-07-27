@@ -2,7 +2,7 @@
 
     <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/>
 
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller hexapod_controller" respawn="false" output="screen"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="hexapod_controller" respawn="false" output="screen"/>
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 </launch>
