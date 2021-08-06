@@ -3,8 +3,8 @@
   <arg name="paused" default="false"/>
 
   <!-- startup simulated world -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="worlds/empty.world"/>
+  <include file="$(find hexapod_gazebo)/launch/tank_world.launch">
+    <arg name="world_name" value="worlds/tank_no_lid.world"/>
     <arg name="paused" value="false"/>
     <arg name="gui" value="true"/>
   </include>
