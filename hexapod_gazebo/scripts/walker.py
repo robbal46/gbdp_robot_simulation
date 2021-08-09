@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Adapted from https://github.com/HumaRobotics/phantomx_gazebo
+
 from threading import Thread
 import rospy
 import math
@@ -22,7 +24,7 @@ hexapod_joints = joints
 class WJFunc:
     """Walk Joint Function"""
     def __init__(self):
-        self.offset = 0
+        self.offset = 0.2
         self.scale = 1
         self.in_offset = 0
         self.in_scale = 1
@@ -56,7 +58,7 @@ class WFunc:
     def __init__(self, **kwargs):
         self.parameters = {}
 
-        self.parameters['swing_scale'] = 1
+        self.parameters['swing_scale'] = 0.8
         self.parameters['vx_scale'] = 0.5
         self.parameters['vy_scale'] = 0.5
         self.parameters['vt_scale'] = 0.4

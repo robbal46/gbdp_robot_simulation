@@ -1,6 +1,7 @@
 <launch>
 
-  <arg name="paused" default="false"/>
+  <!-- Robot can be simulated with or without the manipulator arm attached -->
+  <arg name="use_arm" default="true"/>
 
   <!-- startup simulated world -->
   <include file="$(find hexapod_gazebo)/launch/tank_world.launch">
@@ -11,7 +12,7 @@
 
   <!-- send robot urdf to param server -->
   <include file="$(find hexapod_description)/launch/hexapod_upload.launch">
-    <arg name="arm" value="true"/>
+    <arg name="arm" value="$(arg use_arm)"/>
   </include>
 
   <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
@@ -21,12 +22,19 @@
 
 
   <!-- Load the controllers -->
-  <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/>
-  <rosparam file="$(find hexapod_arm_moveit_config)/config/ros_controllers.yaml" command="load"/>
-  
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" args="joint_state_controller arm_controller hexapod_controller"/>
+  <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/> 
 
+  <group if="$(arg use_arm)">
+    <rosparam file="$(find hexapod_arm_moveit_config)/config/ros_controllers.yaml" command="load"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" args="joint_state_controller arm_controller hexapod_controller"/>
+  </group>
+
+  <group unless="$(arg use_arm)">
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" args="joint_state_controller hexapod_controller"/>
+  </group>
   
 
   <!-- joint state publisher -->
@@ -38,14 +46,18 @@
   <!-- Given the published joint states, publish tf for the robot links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
 
-  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
-  <include file="$(find hexapod_arm_moveit_config)/launch/move_group.launch">
-    <arg name="allow_trajectory_execution" value="true"/>
-    <arg name="fake_execution" value="false"/>
-    <arg name="info" value="true"/>
-    <arg name="debug" value="false"/>
-    <arg name="load_robot_description" value="false"/>
-  </include>
+  <group if="$(arg use_arm)">
+    <!-- Run the main MoveIt executable -->
+    <include file="$(find hexapod_arm_moveit_config)/launch/move_group.launch">
+      <arg name="allow_trajectory_execution" value="true"/>
+      <arg name="fake_execution" value="false"/>
+      <arg name="info" value="true"/>
+      <arg name="debug" value="false"/>
+      <arg name="load_robot_description" value="false"/>
+    </include>
+
+    <!-- <include file="$(find hexapod_arm_moveit_config)/launch/joystick_control.launch"/> -->
+  </group>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <!-- <include file="$(find hexapod_arm_moveit_config)/launch/moveit_rviz.launch">
