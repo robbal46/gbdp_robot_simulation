@@ -73,5 +73,6 @@
   <!-- Launch RQT dashboard -->
   <node name="rqt_dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" args="--perspective-file $(find hexapod_gazebo)/config/dashboard.perspective"/>
 
+  <include file="$(find hexapod_teleop)/launch/joy_control.launch"/>
 
 </launch>
